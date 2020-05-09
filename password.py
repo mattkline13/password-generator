@@ -18,8 +18,6 @@ seperator = False
 leadingSymbol = False
 
 def main():
-    global count, file, seperator, leadingSymbol
-
     if len(argumentList) == 0:
         welcome()
     else:
@@ -50,6 +48,8 @@ def welcome():
         showOptions()
 
 def parse():
+    global count, file, seperator, leadingSymbol
+
     try: 
         arguments, values = getopt.getopt(argumentList, options, long_options) 
         
