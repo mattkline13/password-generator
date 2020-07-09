@@ -11,28 +11,21 @@ long_options = ["help", "random", "dictionary", "count =", "files =", "seperator
 characters = list(string.ascii_letters)
 digits = list(string.digits)
 symbols = list(string.punctuation)
-count = 0
+count = 20
 password = ""
 file = open("dictionary.txt", "r").readlines()
 seperator = False
 leadingSymbol = False
 
 def main():
+    header()
+
     if len(argumentList) == 0:
         welcome()
     else:
         parse()
 
 def welcome():
-    text = ("" +
-"  _____                                    _    _____                           _             \n" +
-" |  __ \                                  | |  / ____|                         | |            \n" +
-" | |__) |_ _ ___ _____      _____  _ __ __| | | |  __  ___ _ __   ___ _ __ __ _| |_ ___  _ __ \n" + 
-" |  ___/ _` / __/ __\ \ /\ / / _ \| '__/ _` | | | |_ |/ _ \ '_ \ / _ \ '__/ _` | __/ _ \| '__|\n" + 
-" | |  | (_| \__ \__ \\ V  V / (_) | | | (_| | | |__| |  __/ | | |  __/ | | (_| | || (_) | |   \n" + 
-" |_|   \__,_|___/___/ \_/\_/ \___/|_|  \__,_|  \_____|\___|_| |_|\___|_|  \__,_|\__\___/|_|   \n\n")
-                                                                                              
-    print(text)
     print("Choose one of the options below to generate a password.")
     print("For additional options use the command line parameters.")
     print("1. Random")
@@ -75,8 +68,6 @@ def parse():
 def random():
     global count, file, password
 
-    if count == 0: count = 20
-
     for x in range(count):
         value = randint(0, 20)
         if (value % 20) == 0: # 10% symbols
@@ -112,5 +103,13 @@ def showOptions():
     print("-f, --file              Specify a custom dictionary file to be used in the '--dictionary' option.")
     print("-s, --seperator         Specify if the words in the '--dictionary' option should be seperated with a '-'.")
     print("-l, --leadingSymbol     Specify if the password should start with a symbol in the '--dictionary' option .")
+
+def header(): 
+    print("  _____                                    _    _____                           _             ")
+    print(" |  __ \                                  | |  / ____|                         | |            ")
+    print(" | |__) |_ _ ___ _____      _____  _ __ __| | | |  __  ___ _ __   ___ _ __ __ _| |_ ___  _ __ ")
+    print(" |  ___/ _` / __/ __\ \ /\ / / _ \| '__/ _` | | | |_ |/ _ \ '_ \ / _ \ '__/ _` | __/ _ \| '__|")
+    print(" | |  | (_| \__ \__ \\ V  V / (_) | | | (_| | | |__| |  __/ | | |  __/ | | (_| | || (_) | |   ")
+    print(" |_|   \__,_|___/___/ \_/\_/ \___/|_|  \__,_|  \_____|\___|_| |_|\___|_|  \__,_|\__\___/|_|   \n")
 
 main()
