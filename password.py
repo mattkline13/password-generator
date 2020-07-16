@@ -11,7 +11,7 @@ long_options = ["help", "random", "dictionary", "count =", "files =", "seperator
 characters = list(string.ascii_letters)
 digits = list(string.digits)
 symbols = list(string.punctuation)
-count = 20
+count = 0
 password = ""
 file = open("dictionary.txt", "r").readlines()
 seperator = False
@@ -49,10 +49,6 @@ def parse():
         for currentArgument, currentValue in arguments: 
             if currentArgument in ("-h", "--help"): 
                 showOptions()
-            elif currentArgument in ("-r", "--random"): 
-                random() 
-            elif currentArgument in ("-d", "--dictionary"): 
-                dictionary()
             elif currentArgument in ("-c", "--count"): 
                 count = int(currentValue)
             elif currentArgument in ("-f", "--file"): 
@@ -61,12 +57,19 @@ def parse():
                 seperator = True
             elif currentArgument in ("-l", "--leadingSymbol"): 
                 leadingSymbol = True
+
+        for currentArgument, currentValue in arguments:
+            if currentArgument in ("-r", "--random"): 
+                random() 
+            elif currentArgument in ("-d", "--dictionary"): 
+                dictionary()
                 
     except getopt.error as err: 
         print (str(err)) 
 
 def random():
     global count, file, password
+    if count == 0: count = 20
 
     for x in range(count):
         value = randint(0, 20)
@@ -109,7 +112,7 @@ def header():
     print(" |  __ \                                  | |  / ____|                         | |            ")
     print(" | |__) |_ _ ___ _____      _____  _ __ __| | | |  __  ___ _ __   ___ _ __ __ _| |_ ___  _ __ ")
     print(" |  ___/ _` / __/ __\ \ /\ / / _ \| '__/ _` | | | |_ |/ _ \ '_ \ / _ \ '__/ _` | __/ _ \| '__|")
-    print(" | |  | (_| \__ \__ \\ V  V / (_) | | | (_| | | |__| |  __/ | | |  __/ | | (_| | || (_) | |   ")
+    print(" | |  | (_| \__ \__ \\\ V  V / (_) | | | (_| | | |__| |  __/ | | |  __/ | | (_| | || (_) | |   ")
     print(" |_|   \__,_|___/___/ \_/\_/ \___/|_|  \__,_|  \_____|\___|_| |_|\___|_|  \__,_|\__\___/|_|   \n")
 
 main()
