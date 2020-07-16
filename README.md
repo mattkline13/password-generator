@@ -22,9 +22,9 @@ Will generate a password using random letters, numbers and symbols of the suppli
 `password.py -r`
 
 #### With supplied length
-`password.py --count 30 --random`
+`password.py --random --count 30`
 
-`password.py -c 30 -r`
+`password.py -r -c 30`
 
 ### Dictionary based password
 Will generate a password using random words from a supplied dictionary of the supplied length. Will default to internal dictionary if none is suppled. Will default to 3 words if none is supplied. Options for adding leading symbol to the password and seperator between words within the password. 
@@ -35,21 +35,21 @@ Will generate a password using random words from a supplied dictionary of the su
 `password.py -d`
 
 #### With supplied length
-`password.py --count 4 --dictionary`
+`password.py --dictionary --count 4`
 
-`password.py -c 4 -d`
+`password.py -d -c 4`
 
 #### With supplied dictionary
-`password.py --file /path --dictionary`
+`password.py --dictionary --file /path`
 
-`password.py -f /path -d`
+`password.py -d -f /path`
 
 #### With leading symbol
-`password.py --leadingSymbol --dictionary`
+`password.py --dictionary --leadingSymbol`
 
-`password.py -l -d`
+`password.py -d -l`
 
 #### With seperator
-`password.py --seperator --dictionary`
+`password.py --dictionary --seperator`
 
-`password.py -s -d`
+`password.py -d -s`
